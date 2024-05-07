@@ -1,1 +1,2 @@
-const dropRight = (arr, n = 1) => arr.slice(0, -n);
+const randomNumber = Math.floor(Math.random() * 100) + 1;
+console.log(randomNumber);
