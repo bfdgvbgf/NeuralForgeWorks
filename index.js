@@ -1,12 +1,28 @@
-function insertionSort(arr) {
-  for (let i = 1; i < arr.length; i++) {
-    let key = arr[i];
-    let j = i - 1;
-    while (j >= 0 && arr[j] > key) {
-      arr[j + 1] = arr[j];
-      j--;
+function numIslands(grid) {
+  if (grid.length === 0) return 0;
+  let count = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === "1") {
+        dfs(grid, i, j);
+        count++;
+      }
     }
-    arr[j + 1] = key;
   }
-  return arr;
+  return count;
+}
+function dfs(grid, i, j) {
+  if (
+    i < 0 ||
+    i >= grid.length ||
+    j < 0 ||
+    j >= grid[0].length ||
+    grid[i][j] === "0"
+  )
+    return;
+  grid[i][j] = "0";
+  dfs(grid, i + 1, j);
+  dfs(grid, i - 1, j);
+  dfs(grid, i, j + 1);
+  dfs(grid, i, j - 1);
 }
